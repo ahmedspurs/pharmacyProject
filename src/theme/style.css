@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=El+Messiri&display=swap");
+* {
+  font-family: "El Messiri", sans-serif;
+  direction: rtl;
+}
+
+.leatest .swiper-slide img {
+  height: 250px;
+}
+.cats .swiper-slide img,
+.cats img {
+  height: 100px;
+}
