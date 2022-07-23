@@ -1,5 +1,7 @@
 {
   "name": "OCRTest",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "vue"
 }

@@ -20,12 +20,18 @@
     "@ionic/pwa-elements": "^3.1.1",
     "@ionic/vue": "^6.0.0",
     "@ionic/vue-router": "^6.0.0",
+    "axios": "^0.27.2",
+    "cordova-plugin-crop": "^0.4.0",
     "core-js": "^3.6.5",
     "tesseract.js": "^2.0.0-beta.2",
     "vue": "^3.2.21",
+    "vue-axios": "^3.4.1",
+    "vue-cropperjs": "^5.0.0",
     "vue-media-upload": "^1.1.4",
     "vue-router": "^4.0.12",
-    "vue-upload-image": "^1.1.5"
+    "vue-upload-image": "^1.1.5",
+    "vue3-circle-progress": "^1.0.7",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@capacitor/cli": "3.6.0",
