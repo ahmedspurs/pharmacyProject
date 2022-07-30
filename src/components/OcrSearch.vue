@@ -124,6 +124,7 @@ import Tesseract from 'tesseract.js';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import 'vue3-circle-progress/dist/circle-progress.css';
 import CircleProgress from 'vue3-circle-progress';
+import { mapGetters } from 'vuex';
 
 export default {
 	name: 'HomePage',
@@ -154,14 +155,12 @@ export default {
 		getProgress() {
 			return this.progress * 100;
 		},
+		...mapGetters(["allProducts"])
 	},
 	created() {
-		this.axios
-			.get('http://localhost:8000/api/products')
-			.then((response) => {
-				this.products = response.data.data;
-				console.log(response.data.data);
-			});
+	
+				this.products = this.allProducts
+				console.log(this.products);
 	},
 	methods: {
 		async takePicture() {
