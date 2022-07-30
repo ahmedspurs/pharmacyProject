@@ -32,11 +32,11 @@ const routes = [
 				component: PharmacyPage,
 			},
 			{
-				path: 'ProductsPage',
+				path: 'ProductsPage/:id',
 				component: ProductsPage,
 			},
 			{
-				path: 'ProductPage',
+				path: 'ProductPage/:id',
 				component: ProductPage,
 			},
 			{

@@ -4,6 +4,11 @@ import router from './router';
 import './theme/index.css';
 import './theme/style.css';
 
+// loading
+
+import VueLoading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
+
 import { IonicVue } from '@ionic/vue';
 import UploadImage from 'vue-upload-image';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
@@ -37,6 +42,7 @@ const app = createApp(App)
 	.use(VueAxios, axios)
 	.use(store)
 	.use(Tesseract)
+	.use(VueLoading)
 	.use('upload-image', UploadImage)
 	.use(defineCustomElements(window));
 

@@ -3,7 +3,7 @@
     <ion-header>
       <div class="flex items-cnter justify-between px-4 py-2">
         <div class="p-4">
-          <router-link to="/tabs/PharmacyPage">
+          <router-link to="/tabs/CategoryPage">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6 text-black"
@@ -20,9 +20,7 @@
             </svg>
           </router-link>
         </div>
-        <h2>
-          {{ products[0].name }}
-        </h2>
+        <h2>نتائج البحث</h2>
         <div class="flex items-center">
           <div class="p-3">
             <svg
@@ -43,9 +41,9 @@
         </div>
       </div>
     </ion-header>
-    <ion-content v-if="show">
+    <ion-content>
       <div class="grid grid-cols-2 gap-4 p-4 py-8">
-        <div class="card" :key="item.id" v-for="item in products[0].products">
+        <div class="card" :key="item.id" v-for="item in foundedDrugs">
           <div class="border border-gray-300 rounded-xl relative">
             <router-link :to="'/tabs/ProductPage/' + item.id">
               <img
@@ -57,10 +55,8 @@
 
             <div class="text-right p-4">
               <span class="block font-semibold">{{ item.name }}</span>
-              <span class="block"> {{ products[0].name }}</span>
-              <span class="text-blue-500 font-semibold block pt-2"
-                >{{ item.price }}$</span
-              >
+              <!-- <span class="block"> {{ products[0].name }}</span> -->
+              <span class="text-blue-500 font-semibold block pt-2">150$</span>
             </div>
 
             <svg
@@ -86,22 +82,14 @@
 
 <script>
 import { IonPage, IonHeader, IonContent } from "@ionic/vue";
-import { mapGetters } from "vuex";
 
 export default {
-  name: "ProductsPage",
+  name: "OcrResults",
   components: {
     IonPage,
     IonHeader,
     IonContent,
   },
-  data() {
-    return {
-      products: [],
-      show: false,
-    };
-  },
-  computed: mapGetters(["allCategories", "allProducts"]),
   created() {
     let loader = this.$loading.show({
       // Optional parameters
@@ -110,18 +98,11 @@ export default {
       onCancel: this.onCancel,
       opacity: 1,
     });
-    this.$store.dispatch("fetchProducts");
-    this.$store.dispatch("fetchCategories");
+
     // simulate AJAX
     setTimeout(() => {
       loader.hide();
-      this.show = true;
     }, 2000);
-
-    this.products = this.allCategories.filter(
-      (item) => item.id == this.$route.params.id
-    );
-    console.log(this.products);
   },
 };
 </script>

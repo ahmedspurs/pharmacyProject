@@ -13,6 +13,10 @@ export default defineComponent({
   components: {
     IonApp,
     IonRouterOutlet
+  },
+  created(){
+    this.$store.dispatch("fetchProducts")
+    this.$store.dispatch("fetchCategories")
   }
 });
 </script>
