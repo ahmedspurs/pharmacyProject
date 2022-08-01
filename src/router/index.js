@@ -9,11 +9,21 @@ import CheckoutPage from '../views/CheckoutPage.vue';
 import OrderDetails from '../views/OrderDetails.vue';
 import SearchPage from '../views/SearchPage.vue';
 import MapPage from '../views/MapPage.vue';
+import LoginPage from '../views/LoginPage.vue';
+import RegisterPage from '../views/RegisterPage.vue';
 
 const routes = [
 	{
 		path: '/',
-		redirect: '/tabs/HomePage',
+		redirect: '/LoginPage',
+	},
+	{
+		path: '/LoginPage',
+		component:LoginPage
+	},
+	{
+		path: '/RegisterPage',
+		component:RegisterPage
 	},
 	{
 		path: '/tabs/',
