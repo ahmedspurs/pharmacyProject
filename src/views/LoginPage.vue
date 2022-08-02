@@ -10,7 +10,7 @@
         role="alert"
       >
         <div
-          class="ml-3 text-sm font-medium text-green-700 dark:text-green-800"
+          class="ml-3 py-1 text-sm font-medium text-green-700 dark:text-green-800"
         >
           تم تسجيل حسابك بنجاح , يمكنك الان تسجيل الدخول
         </div>
