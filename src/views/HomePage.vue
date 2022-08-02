@@ -1,5 +1,5 @@
 <template>
-  <ion-page class="">
+  <ion-page class="" >
     <ion-header>
       <div class="flex items-center justify-between px-4">
         <div class="flex items">
