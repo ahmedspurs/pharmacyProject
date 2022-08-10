@@ -287,6 +287,7 @@ export default {
         })();
       } catch (error) {
         console.error(error);
+        this.alert("عفوا , حدث خطاء ما")
       }
     },
     async searchDrug() {
@@ -321,6 +322,9 @@ export default {
 
       if (!founded) {
         document.querySelector("#hint").innerHTML += `Drug not found !.`;
+      }else{
+        this.dismiss()
+        this.$router.push("/tabs/OcrResuls")
       }
       console.log(this.$store.state.foundedDrugs);
     },
@@ -332,6 +336,19 @@ export default {
     },
     dismiss() {
       modalController.dismiss();
+    },
+      async alert(msg) {
+      const alert = await alertController.create({
+        cssClass: "success-alert",
+        message:
+          ' <div class="flex flex-col justify-center items-center text-center"><div class="f-modal-icon f-modal-error animate"><span class="f-modal-x-mark"> <span class="f-modal-line f-modal-left animateXLeft"></span><span class="f-modal-line f-modal-right animateXRight"></span> </span><div class="f-modal-placeholder"></div><div class="f-modal-fix"></div></div><h2 class="font-semibold">     ' +
+          msg +
+          "  </h2></div>",
+        buttons: ["تم"],
+      });
+      await alert.present();
+      const { role } = await alert.onDidDismiss();
+      console.log(role);
     },
   },
 };

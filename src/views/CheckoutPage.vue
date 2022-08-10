@@ -53,14 +53,35 @@
                   type="tel"
                   id="email"
                   v-model="address"
-                  class="border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-16"
+                  class="
+                    border border-gray-200
+                    focus:outline-none
+                    rounded-md
+                    focus:border-gray-500 focus:shadow-sm
+                    w-full
+                    p-3
+                    h-16
+                  "
                   placeholder=" "
                   autocomplete="off"
                 >
                 </textarea>
                 <label
                   for="email"
-                  class="absolute top-0 right-0 px-3 py-5 h-full pointer-events-none transform origin-left transition-all duration-100 ease-in-out"
+                  class="
+                    absolute
+                    top-0
+                    right-0
+                    px-3
+                    py-5
+                    h-full
+                    pointer-events-none
+                    transform
+                    origin-left
+                    transition-all
+                    duration-100
+                    ease-in-out
+                  "
                   >العنوان بالكامل</label
                 >
               </div>
@@ -70,13 +91,34 @@
                   type="tel"
                   id="phone"
                   v-model="phone"
-                  class="border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-16"
+                  class="
+                    border border-gray-200
+                    focus:outline-none
+                    rounded-md
+                    focus:border-gray-500 focus:shadow-sm
+                    w-full
+                    p-3
+                    h-16
+                  "
                   placeholder=" "
                   autocomplete="off"
                 />
                 <label
                   for="phone"
-                  class="absolute top-0 right-0 px-3 py-5 h-full pointer-events-none transform origin-left transition-all duration-100 ease-in-out"
+                  class="
+                    absolute
+                    top-0
+                    right-0
+                    px-3
+                    py-5
+                    h-full
+                    pointer-events-none
+                    transform
+                    origin-left
+                    transition-all
+                    duration-100
+                    ease-in-out
+                  "
                   >رقم الهاتف</label
                 >
               </div>
@@ -135,6 +177,7 @@ import {
   IonCardContent,
   IonButton,
   IonText,
+  alertController,
 } from "@ionic/vue";
 
 export default {
@@ -170,13 +213,27 @@ export default {
           data
         );
         if (response.data.success) {
-          console.log("success");
+          this.alert("تم اضافه الطلب بنجاح");
         } else {
-          console.log("error");
+          this.alert("عفوا , حدث خطاء ما");
         }
       } catch (err) {
-        console.log(err);
+        this.alert("عفوا , حدث خطاء ما");
       }
+    },
+
+    async alert(msg) {
+      const alert = await alertController.create({
+        cssClass: "success-alert",
+        message:
+          ' <div class="flex flex-col justify-center items-center text-center"><div class="f-modal-icon f-modal-error animate"><span class="f-modal-x-mark"> <span class="f-modal-line f-modal-left animateXLeft"></span><span class="f-modal-line f-modal-right animateXRight"></span> </span><div class="f-modal-placeholder"></div><div class="f-modal-fix"></div></div><h2 class="font-semibold">     ' +
+          msg +
+          "  </h2></div>",
+        buttons: ["تم"],
+      });
+      await alert.present();
+      const { role } = await alert.onDidDismiss();
+      console.log(role);
     },
   },
   created() {
