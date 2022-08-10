@@ -1,5 +1,5 @@
 <template>
-  <ion-page class="" >
+  <ion-page class="">
     <ion-header>
       <div class="flex items-center justify-between px-4">
         <div class="flex items">
@@ -59,8 +59,8 @@
         </ion-text>
       </div>
       <ion-slides class="cats" :options="{ slidesPerView: 2.5 }">
-        <ion-slide class="px-2" :key="item" v-for="item in allCategories">
-          <router-link to="/tabs/ProductsPage">
+        <ion-slide class="px-2" :key="item.id" v-for="item in allPharmacies">
+          <router-link :to="'/tabs/ProductsPage/' + item.id">
             <ion-card class="shadow-none w-full">
               <img
                 src="https://medomand.com/wp-content/uploads/2021/05/Medomand-online-Pharmacy-supply-1024x759.png"
@@ -157,7 +157,7 @@ export default {
       this.show = true;
     }, 2000);
   },
-  computed: mapGetters(["allCategories", "allProducts"]),
+  computed: mapGetters(["allPharmacies", "allProducts"]),
 };
 </script>
 

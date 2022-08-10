@@ -11,85 +11,37 @@
             </div>
             <div class="">
               <div
-                class="
-                  py-8
-                  text-base
-                  leading-6
-                  space-y-4
-                  text-gray-700
-                  sm:text-lg sm:leading-7
-                "
+                class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7"
               >
                 <div class="floating-input mb-5 relative">
                   <input
                     type="email"
                     id="name"
-                    v-model="email"
-                    class="
-                      border border-gray-200
-                      focus:outline-none
-                      rounded-md
-                      focus:border-gray-500 focus:shadow-sm
-                      w-full
-                      p-3
-                      h-16
-                    "
+                    v-model="name"
+                    class="border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-16"
                     placeholder=" "
                     autocomplete="off"
                   />
                   <label
                     for="email"
-                    class="
-                      absolute
-                      top-0
-                      right-0
-                      px-3
-                      py-5
-                      h-full
-                      pointer-events-none
-                      transform
-                      origin-left
-                      transition-all
-                      duration-100
-                      ease-in-out
-                    "
-                    >الايميل</label
+                    class="absolute top-0 right-0 px-3 py-5 h-full pointer-events-none transform origin-left transition-all duration-100 ease-in-out"
+                    >الاسم</label
                   >
                 </div>
+
                 <div class="floating-input mb-5 relative">
                   <input
-                    type="text"
+                    type="email"
                     id="name"
-                    v-model="userName"
-                    class="
-                      border border-gray-200
-                      focus:outline-none
-                      rounded-md
-                      focus:border-gray-500 focus:shadow-sm
-                      w-full
-                      p-3
-                      h-16
-                    "
+                    v-model="email"
+                    class="border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-16"
                     placeholder=" "
                     autocomplete="off"
                   />
                   <label
                     for="email"
-                    class="
-                      absolute
-                      top-0
-                      right-0
-                      px-3
-                      py-5
-                      h-full
-                      pointer-events-none
-                      transform
-                      origin-left
-                      transition-all
-                      duration-100
-                      ease-in-out
-                    "
-                    >الاسم </label
+                    class="absolute top-0 right-0 px-3 py-5 h-full pointer-events-none transform origin-left transition-all duration-100 ease-in-out"
+                    >الايميل</label
                   >
                 </div>
                 <div class="floating-input mb-5 relative">
@@ -97,55 +49,30 @@
                     type="password"
                     v-model="password"
                     id="name"
-                    class="
-                      border border-gray-200
-                      focus:outline-none
-                      rounded-md
-                      focus:border-gray-500 focus:shadow-sm
-                      w-full
-                      p-3
-                      h-16
-                    "
+                    class="border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-16"
                     placeholder=" "
                     autocomplete="off"
                   />
                   <label
                     for="email"
-                    class="
-                      absolute
-                      top-0
-                      right-0
-                      px-3
-                      py-5
-                      h-full
-                      pointer-events-none
-                      transform
-                      origin-left
-                      transition-all
-                      duration-100
-                      ease-in-out
-                    "
+                    class="absolute top-0 right-0 px-3 py-5 h-full pointer-events-none transform origin-left transition-all duration-100 ease-in-out"
                     >كلمه السر</label
                   >
                 </div>
                 <div class="relative">
                   <button
                     @click="login()"
-                  v-if="regLoad"
-
+                    v-if="regLoad"
                     class="bg-violet-600 w-full p-2 text-white rounded text-xl"
                   >
                     تسجيل حساب جديد
                   </button>
-                       <button
-                  v-if="!regLoad"
-                    class="bg-violet-400 w-full py-2 text-white rounded text-xl flex justify-center  items-center"
+                  <button
+                    v-if="!regLoad"
+                    class="bg-violet-400 w-full py-2 text-white rounded text-xl flex justify-center items-center"
                   >
-                  
-                    <span class="ml-8">
-                        جاري تسجيل حساب جديد
-                    </span>
-<span class="loader -mt-3"></span>
+                    <span class="ml-8"> جاري تسجيل حساب جديد </span>
+                    <span class="loader -mt-3"></span>
                   </button>
                   <p class="text-center py-2">
                     لديك حساب بالفعل ؟
@@ -169,63 +96,48 @@ export default {
   components: { IonPage },
   data() {
     return {
-      userName: "",
+      name: "",
       email: "",
       password: "",
       city: "",
       address: "",
       tel: "",
       role: "user",
-      regLoad : true
+      regLoad: true,
     };
   },
-
 
   methods: {
     async login() {
       this.regLoad = false;
       const log = {
-        userName: this.userName,
+        name: this.name,
         email: this.email,
         password: this.password,
-
         role: "user",
       };
-      if (
-        this.userName == "" &&
-        this.email == "" &&
-        this.password == "" 
-
-      ) {
+      if (this.name == "" && this.email == "" && this.password == "") {
         this.failed();
-      this.regLoad = true;
-        
-      }else{
-             try {
-            const res = await axios.post(
-              "http://localhost:3000/api/auth/register",
-              log
-            );
-            console.log(res.data);
-            if (res.data.success) {
-                this.userName = "" 
-        this.email = "" 
-        this.password = "" 
+        this.regLoad = true;
+      } else {
+        try {
+          const res = await axios.post(
+            "http://localhost:3000/api/auth/register",
+            log
+          );
+          console.log(res.data);
+          if (res.data.success) {
+            this.name = "";
+            this.email = "";
+            this.password = "";
 
-                      this.$store.state.reg = true;
-      this.regLoad = true;
-              this.$router.push("/LoginPage");
-
-
-            }
-          } catch (error) {
+            this.$store.state.reg = true;
+            this.regLoad = true;
+            this.$router.push("/LoginPage");
+          }
+        } catch (error) {
           this.wrong("  حدث خطاء ما الرجاء التحقق من الاتصال بالانترنت");
-      this.regLoad = true;
-
-          
-          
-
-         
+          this.regLoad = true;
         }
       }
 
@@ -259,5 +171,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

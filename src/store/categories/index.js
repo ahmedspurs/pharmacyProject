@@ -12,7 +12,7 @@ const state = {
 };
 
 const getters = {
-  allCategories: (state) => {
+  allPharmacies: (state) => {
     return state.categories;
   },
 };

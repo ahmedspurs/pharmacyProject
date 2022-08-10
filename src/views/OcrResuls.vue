@@ -3,7 +3,7 @@
     <ion-header>
       <div class="flex items-cnter justify-between px-4 py-2">
         <div class="p-4">
-          <router-link to="/tabs/CategoryPage">
+          <router-link to="/tabs/pharmacyPage">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6 text-black"
@@ -43,7 +43,11 @@
     </ion-header>
     <ion-content>
       <div class="grid grid-cols-2 gap-4 p-4 py-8">
-        <div class="card" :key="item.id" v-for="item in foundedDrugs">
+        <div
+          class="card"
+          :key="item.id"
+          v-for="item in $store.state.foundedDrugs"
+        >
           <div class="border border-gray-300 rounded-xl relative">
             <router-link :to="'/tabs/ProductPage/' + item.id">
               <img

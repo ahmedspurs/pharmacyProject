@@ -27,7 +27,7 @@
     </ion-header>
     <ion-content>
       <div class="grid grid-cols-2 gap-4 p-4">
-        <div class="card" :key="item" v-for="item in allCategories">
+        <div class="card" :key="item" v-for="item in allPharmacies">
           <router-link :to="'/tabs/ProductsPage/' + item.id">
             <ion-card class="shadow-none w-full">
               <img
@@ -63,7 +63,7 @@ import { mapGetters } from "vuex";
 import { ref } from "vue";
 
 export default {
-  name: "CategoryPage",
+  name: "pharmacyPage",
   components: {
     IonPage,
     IonContent,
@@ -72,7 +72,7 @@ export default {
     IonCardContent,
     IonText,
   },
-  computed: mapGetters(["allCategories"]),
+  computed: mapGetters(["allPharmacies"]),
   setup() {
     const accordionGroup = ref();
     return {
@@ -96,5 +96,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

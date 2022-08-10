@@ -102,7 +102,7 @@ export default {
       show: false,
     };
   },
-  computed: mapGetters(["allCategories", "allProducts"]),
+  computed: mapGetters(["allPharmacies", "allProducts"]),
   created() {
     let loader = this.$loading.show({
       // Optional parameters
@@ -120,7 +120,7 @@ export default {
       (item) => item.id == this.$route.params.id
     );
 
-    this.pharmacy = this.allCategories.filter(
+    this.pharmacy = this.allPharmacies.filter(
       (item) => item.id == this.product[0].pharmacyId
     );
     this.pharmacyName = this.pharmacy[0].name;
@@ -129,8 +129,9 @@ export default {
   methods: {
     addToCart(product) {
       this.cart = {
-        id: product.id,
-        name: product.name,
+        productId: product.id,
+        productName: product.name,
+        pharmacyId: product.pharmacyId,
         price: product.price,
         image: product.image,
         qty: 1,
