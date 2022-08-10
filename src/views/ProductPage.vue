@@ -59,7 +59,7 @@
             @click="addToCart(product[0])"
             class="w-3/4 text-white bg-blue-600 rounded-xl p-4"
           >
-            شراء الان
+            اضف الى السلة
           </button>
           <button
             class="border border-gray-600 text-blue-600 mx-auto p-4 rounded-xl"

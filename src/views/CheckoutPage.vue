@@ -101,7 +101,7 @@
                 <span>رسوم التوصيل</span>
               </ion-text>
               <ion-text color="dark">
-                <span>50$</span>
+                <span>50 ج.س</span>
               </ion-text>
             </div>
             <div class="products flex justify-between">
@@ -109,7 +109,7 @@
                 <span>المجموع الكلي</span>
               </ion-text>
               <ion-text color="dark">
-                <span>550.99$</span>
+                <span>{{ totalPrice + 50 }}</span>
               </ion-text>
             </div>
           </ion-card-content>
@@ -126,6 +126,7 @@
 
 <script>
 import axios from "axios";
+import { mapGetters } from "vuex";
 import {
   IonPage,
   IonHeader,
@@ -153,6 +154,7 @@ export default {
       phone: "",
     };
   },
+  computed: mapGetters(["totalPrice"]),
   methods: {
     async checkout() {
       const cart = this.$store.state.products.cart;
