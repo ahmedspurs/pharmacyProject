@@ -232,6 +232,7 @@ export default {
             alert.present();
             console.log("Cant read any text from this image .");
             document.querySelector("#hint").innerHTML = "";
+            return;
           } else {
             data.data.symbols.forEach((symbol) => {
               if (symbol.text == "|") {

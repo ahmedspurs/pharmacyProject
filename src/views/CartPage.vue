@@ -36,7 +36,7 @@
             <div class="w-3/4">
               <img
                 class="w-24 h-24"
-                :src="'https://admin.istanakado.com/uploads/' + item.image"
+                :src="'http://localhost:3000/uploads/' + item.image"
                 alt=""
               />
             </div>
@@ -190,5 +190,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
