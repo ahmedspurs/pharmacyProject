@@ -23,6 +23,7 @@
     "axios": "^0.27.2",
     "cordova-plugin-crop": "^0.4.0",
     "core-js": "^3.6.5",
+    "mapbox-gl": "^2.9.2",
     "tesseract.js": "^2.0.0-beta.2",
     "vue": "^3.2.21",
     "vue-axios": "^3.4.1",

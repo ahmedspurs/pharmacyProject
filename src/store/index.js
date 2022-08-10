@@ -5,9 +5,10 @@ import users from "./users";
 import orders from "./orders";
 
 export default createStore({
-	state: {
-		foundedDrugs: [],
-	},
+  state: {
+    foundedDrugs: [],
+    user: {},
+  },
   getters: {},
   mutations: {},
   actions: {},

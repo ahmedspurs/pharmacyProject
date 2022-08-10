@@ -49,108 +49,34 @@
           <ion-card-content>
             <form class="w-full">
               <div class="floating-input mb-5 relative">
-                <input
-                  type="text"
-                  id="name"
-                  class="
-                    border border-gray-200
-                    focus:outline-none
-                    rounded-md
-                    focus:border-gray-500 focus:shadow-sm
-                    w-full
-                    p-3
-                    h-16
-                  "
-                  placeholder=" "
-                  autocomplete="off"
-                />
-                <label
-                  for="name"
-                  class="
-                    absolute
-                    top-0
-                    right-0
-                    px-3
-                    py-5
-                    h-full
-                    pointer-events-none
-                    transform
-                    origin-left
-                    transition-all
-                    duration-100
-                    ease-in-out
-                  "
-                  >الاسم</label
-                >
-              </div>
-              <div class="floating-input mb-5 relative">
-                <input
-                  type="email"
+                <textarea
+                  type="tel"
                   id="email"
-                  class="
-                    border border-gray-200
-                    focus:outline-none
-                    rounded-md
-                    focus:border-gray-500 focus:shadow-sm
-                    w-full
-                    p-3
-                    h-16
-                  "
+                  v-model="address"
+                  class="border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-16"
                   placeholder=" "
                   autocomplete="off"
-                />
+                >
+                </textarea>
                 <label
                   for="email"
-                  class="
-                    absolute
-                    top-0
-                    right-0
-                    px-3
-                    py-5
-                    h-full
-                    pointer-events-none
-                    transform
-                    origin-left
-                    transition-all
-                    duration-100
-                    ease-in-out
-                  "
-                  >الايميل</label
+                  class="absolute top-0 right-0 px-3 py-5 h-full pointer-events-none transform origin-left transition-all duration-100 ease-in-out"
+                  >العنوان بالكامل</label
                 >
               </div>
 
               <div class="floating-input mb-5 relative">
                 <input
-                  type="number"
+                  type="tel"
                   id="phone"
-                  class="
-                    border border-gray-200
-                    focus:outline-none
-                    rounded-md
-                    focus:border-gray-500 focus:shadow-sm
-                    w-full
-                    p-3
-                    h-16
-                  "
+                  v-model="phone"
+                  class="border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-16"
                   placeholder=" "
                   autocomplete="off"
                 />
                 <label
                   for="phone"
-                  class="
-                    absolute
-                    top-0
-                    right-0
-                    px-3
-                    py-5
-                    h-full
-                    pointer-events-none
-                    transform
-                    origin-left
-                    transition-all
-                    duration-100
-                    ease-in-out
-                  "
+                  class="absolute top-0 right-0 px-3 py-5 h-full pointer-events-none transform origin-left transition-all duration-100 ease-in-out"
                   >رقم الهاتف</label
                 >
               </div>
@@ -192,15 +118,14 @@
 
       <!-- checkout section -->
       <div class="checkout p-2">
-        <router-link to="/tabs/OrderDetails">
-          <ion-button expand="full">اتمام الطلب</ion-button>
-        </router-link>
+        <ion-button expand="full" @click="checkout()">اتمام الطلب</ion-button>
       </div>
     </ion-content>
   </ion-page>
 </template>
 
 <script>
+import axios from "axios";
 import {
   IonPage,
   IonHeader,
@@ -221,6 +146,36 @@ export default {
     IonCardContent,
     IonButton,
     IonText,
+  },
+  data() {
+    return {
+      address: "",
+      phone: "",
+    };
+  },
+  methods: {
+    async checkout() {
+      const cart = this.$store.state.products.cart;
+      const data = {
+        userId: this.$store.state.user.id,
+        address: this.address,
+        phone: this.phone,
+        cart,
+      };
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/api/orders",
+          data
+        );
+        if (response.data.success) {
+          console.log("success");
+        } else {
+          console.log("error");
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    },
   },
   created() {
     let loader = this.$loading.show({

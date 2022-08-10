@@ -101,7 +101,7 @@ export default {
       show: false,
     };
   },
-  computed: mapGetters(["allCategories", "allProducts"]),
+  computed: mapGetters(["allPharmacies", "allProducts"]),
   created() {
     let loader = this.$loading.show({
       // Optional parameters
@@ -118,7 +118,7 @@ export default {
       this.show = true;
     }, 2000);
 
-    this.products = this.allCategories.filter(
+    this.products = this.allPharmacies.filter(
       (item) => item.id == this.$route.params.id
     );
     console.log(this.products);
