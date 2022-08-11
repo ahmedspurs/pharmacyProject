@@ -86,7 +86,7 @@
 </template>
 
 <script>
-import { IonPage, IonContent } from "@ionic/vue";
+import { IonPage, IonContent,alertController } from "@ionic/vue";
 import { mapGetters } from "vuex";
 export default {
   name: "ProducPage",
@@ -137,8 +137,21 @@ export default {
         qty: 1,
       };
       this.$store.dispatch("addToCart", this.cart);
-
+      this.alert("تمت اضافه العنصر الي السله بنجاح")
       console.log(this.$store.state.products.cart);
+    },
+      async alert(msg) {
+      const alert = await alertController.create({
+        cssClass: "success-alert",
+        message:
+          ' <div class="flex flex-col justify-center items-center text-center"><div class="f-modal-icon f-modal-error animate"><span class="f-modal-x-mark"> <span class="f-modal-line f-modal-left animateXLeft"></span><span class="f-modal-line f-modal-right animateXRight"></span> </span><div class="f-modal-placeholder"></div><div class="f-modal-fix"></div></div><h2 class="font-semibold">     ' +
+          msg +
+          "  </h2></div>",
+        buttons: ["تم"],
+      });
+      await alert.present();
+      const { role } = await alert.onDidDismiss();
+      console.log(role);
     },
   },
 };
